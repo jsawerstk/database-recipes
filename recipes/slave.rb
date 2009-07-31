@@ -69,3 +69,14 @@ template "/etc/mysql/configure-slave.sql" do
       )
   notifies :run, resources(:execute => "mysql-slave-config"), :immediately
 end
+
+template "/etc/mysql/my.cnf" do
+  source "/slave/my.cnf.erb"
+  owner "root"
+  group "root"
+  mode "0600"
+   variables(
+        :slave_server_id     => slave_server_id
+      )
+  notifies :run
+end

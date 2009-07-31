@@ -69,3 +69,15 @@ template "/etc/mysql/add-slave-user.sql" do
       )
   notifies :run, resources(:execute => "mysql-add-slave-user"), :immediately
 end
+
+
+template "/etc/mysql/my.cnf" do
+  source "/master/my.cnf.erb"
+  owner "root"
+  group "root"
+  mode "0600"
+   variables(
+        :master_server_id     => master_server_id
+      )
+  notifies :run
+end

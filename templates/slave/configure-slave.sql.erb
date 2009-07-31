@@ -1,0 +1,2 @@
+CHANGE MASTER TO MASTER_HOST='<%= @master_host %>', MASTER_USER='<%= @slave_username %>', MASTER_PASSWORD='<%= @slave_password %>', MASTER_LOG_FILE='<%= @log_file_name %>', MASTER_LOG_POS=<%= @log_position %>;
+SLAVE START;
